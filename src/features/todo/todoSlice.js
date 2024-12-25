@@ -1,10 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { useLocalStorage } from "../../utils/CustomHook";
 
 const staredList = {
   id: Date.now() + 9,
   name: "Stared",
   todos: [],
-  completed: [],
 };
 const defaultList = {
   id: Date.now(),
@@ -15,7 +15,10 @@ const defaultList = {
 
 const todoSlice = createSlice({
   name: "todoList",
-  initialState: [staredList, defaultList],
+  initialState: JSON.parse(localStorage.getItem("TodoList")) || [
+    staredList,
+    defaultList,
+  ],
   reducers: {
     addTodo: (state, action) => {
       const { name, date, listId, description } = action.payload;
@@ -30,6 +33,7 @@ const todoSlice = createSlice({
         };
         list.todos.push(newTodo);
       }
+      useLocalStorage("TodoList", state);
     },
     markCompleted: (state, action) => {
       const { listId, todoId } = action.payload;
@@ -37,9 +41,41 @@ const todoSlice = createSlice({
       let list = state.find((list) => list.id === listId);
       if (list) {
         const todo = list.todos.find((todo) => todo.id === todoId);
-        list.todos = list.todos.filter((todo) => todo.id !== todoId && todo);
-        list.completed.push(todo);
+        if (todo.listId) {
+          let ogList = state.find((list) => list.id === todo.listId);
+          ogList.todos = ogList.todos.filter((todo) => todo.id !== todoId);
+          ogList.completed.push(todo);
+        } else {
+          list.todos = list.todos.filter((todo) => todo.id !== todoId && todo);
+          list.completed.push(todo);
+        }
+        state[0].todos = state[0].todos.filter((todo) => todo.id !== todoId);
       }
+      useLocalStorage("TodoList", state);
+    },
+    toggelStar: (state, action) => {
+      const { listId, todoId } = action.payload;
+      const list = state.find((list) => list.id === listId);
+      if (list) {
+        const todo = list.todos.find((todo) => todo.id === todoId);
+        if (todo) {
+          if (todo.starred) {
+            todo.starred = false;
+            state[0].todos = state[0].todos.filter(
+              (STodo) => STodo.id !== todo.id
+            );
+            if (todo.listId) {
+              const ogList = state.find((list) => list.id === todo.listId);
+              const ogTodo = ogList.todos.find((tTodo) => tTodo.id === todo.id);
+              ogTodo.starred = false;
+            }
+          } else {
+            todo.starred = true;
+            state[0].todos.push({ ...todo, listId: listId });
+          }
+        }
+      }
+      useLocalStorage("TodoList", state);
     },
     createNewList: (state, action) => {
       const { name } = action.payload;
@@ -50,9 +86,36 @@ const todoSlice = createSlice({
         completed: [],
       };
       state.push(newList);
+      useLocalStorage("TodoList", state);
+    },
+    deleteList: (state, action) => {
+      const { listId } = action.payload;
+      state = state.filter((list) => list.id !== listId);
+      useLocalStorage("TodoList", state);
+      return state;
+    },
+    renameList: (state, action) => {
+      const { listId, newName } = action.payload;
+      const list = state.find((list) => list.id === listId);
+      list.name = newName;
+      useLocalStorage("TodoList", state);
+    },
+    deleteCompletedTasks: (state, action) => {
+      const { listId } = action.payload;
+      const list = state.find((list) => list.id === listId);
+      list.completed = [];
+      useLocalStorage("TodoList", state);
     },
   },
 });
 
-export const { markCompleted, addTodo, createNewList } = todoSlice.actions;
+export const {
+  addTodo,
+  markCompleted,
+  toggelStar,
+  createNewList,
+  deleteList,
+  renameList,
+  deleteCompletedTasks,
+} = todoSlice.actions;
 export default todoSlice.reducer;

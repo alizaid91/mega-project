@@ -8,7 +8,7 @@ const Navbar = () => {
   return (
     <div className='fixed w-full z-10'>
       <nav>
-        <ul className='bg-gray-800 text-white py-4 px-4 sm:px-8 flex justify-between items-center'>
+        <ul className='bg-black/20 backdrop-blur-md text-white py-4 px-4 sm:px-8 flex justify-between items-center'>
           <h1 className='text-xl sm:text-2xl font-bold'>
             <Link to="/">Mega Project</Link>
           </h1>
@@ -31,7 +31,7 @@ const Navbar = () => {
           </div>
         </ul>
       </nav>
-      <div className={`${isMobileMenuOpen ? 'scale-100 opacity-100 visible' : 'scale-110 opacity-0 invisible'} transition-all fixed w-screen h-screen top-0 left-0 bg-gray-800 flex justify-center items-center`}>
+      <div className={`${isMobileMenuOpen ? 'scale-100 opacity-100 visible' : 'scale-110 opacity-0 invisible'} transition-all fixed w-screen h-screen top-0 left-0 bg-black/70 backdrop-blur-xl flex justify-center items-center`}>
         <RxCross2 className='text-3xl absolute top-5 right-5 text-black bg-white p-1 rounded-full cursor-pointer' onClick={() => setIsMobileMenuOpen(false)} />
         <ul className={`flex flex-col items-center justify-center gap-6 text-xl text-white p-4 font-bold`}>
           <li>

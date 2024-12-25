@@ -10,14 +10,16 @@ import NotFound from "./Pages/NotFound";
 import { Provider } from 'react-redux'
 import counterStore from './features/counter/store'
 import todoStore from "./features/todo/store";
+import weatherStore from "./features/weather/store";
+import CityWeather from "./features/weather/CityWeather";
 
 const AppRoutes = () => {
     return (
         <Routes>
             <Route path="/" element={<Home />} />
-            {/* <Route path="/counter" element={<Provider store={counterStore}><Counter /></Provider>} /> */}
             <Route path="/todo" element={<Provider store={todoStore}><TodoList /></Provider>} />
-            <Route path="/weather" element={<WeatherDashboard />} />
+            <Route path="/weather" element={<Provider store={weatherStore}><WeatherDashboard /></Provider>} />
+            <Route path="/weather/:city" element={<Provider store={weatherStore}><CityWeather /></Provider>} />
             <Route path="/cart" element={<ShoppingCart />} />
             <Route path="*" element={<NotFound />} />
         </Routes>

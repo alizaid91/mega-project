@@ -32,8 +32,8 @@ const CreateTask = ({ listId, showPopup, setShowPopup }) => {
     };
 
     return (
-        <div className={`${showPopup ? 'visible' : 'invisible'} fixed w-screen h-screen top-0 left-0 bg-black/30 flex justify-center z-50`}>
-            <div className={`relative ${showPopup ? 'opacity-100 scale-100' : 'scale-125 opacity-0'} transition-all bg-white shadow-md rounded-xl p-6 max-w-md my-10 overflow-y-scroll w-full mx-3`}>
+        <div className={`${showPopup ? 'visible' : 'invisible'} fixed w-screen h-screen top-0 left-0 backdrop-blur-md flex justify-center items-center z-50`}>
+            <div className={`relative ${showPopup ? 'opacity-100 translate-y-0 scale-100' : 'scale-75 translate-y-20 opacity-0'} transition-all bg-white shadow-md rounded-xl p-6 overflow-y-scroll no-scrollbar w-[280px] sm:w-[450px]`}>
                 <h2 className="text-2xl font-semibold mb-4 text-gray-700">
                     Create New Todo
                 </h2>
@@ -92,7 +92,7 @@ const CreateTask = ({ listId, showPopup, setShowPopup }) => {
                         Add Task
                     </button>
                 </form>
-                <div onClick={() => setShowPopup()} className="text-3xl absolute top-3 right-3">
+                <div onClick={() => setShowPopup()} className="text-3xl absolute top-3 right-3 cursor-pointer">
                     <RiCloseCircleFill />
                 </div>
             </div>
