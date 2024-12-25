@@ -46,7 +46,7 @@ const TodoList = () => {
         </motion.p>
       </header>
       <motion.div
-        className='relative p-1 flex flex-col max-w-[500px] gap-3 mx-auto'
+        className='relative p-1 flex flex-col max-w-[500px] gap-3 mx-2'
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.5 }}
