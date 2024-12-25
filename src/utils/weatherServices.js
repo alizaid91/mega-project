@@ -1,5 +1,5 @@
 const BASE_URL = "http://api.weatherapi.com/v1";
-console.log(import.meta.env.VITE_REACT_WEATHER_API_KEY);
+console.log(JSON.stringify(import.meta.env.VITE_REACT_WEATHER_API_KEY));
 
 const weatherServices = {
   //fetch weather of multiple cities
@@ -7,9 +7,9 @@ const weatherServices = {
     const fetchWeather = async (city) => {
       try {
         const responce = await fetch(
-          `${BASE_URL}/current.json?key=${
+          `${BASE_URL}/current.json?key=${JSON.stringify(
             import.meta.env.VITE_REACT_WEATHER_API_KEY
-          }&q=${city}&aqi=no`
+          )}&q=${city}&aqi=no`
         );
         if (!responce.ok) {
           console.log("Error fetching weather at:", city);
@@ -29,9 +29,9 @@ const weatherServices = {
   atCity: async (city) => {
     try {
       const responce = await fetch(
-        `${BASE_URL}/current.json?key=${
+        `${BASE_URL}/current.json?key=${JSON.stringify(
           import.meta.env.VITE_REACT_WEATHER_API_KEY
-        }&q=${city}&aqi=no`
+        )}&q=${city}&aqi=no`
       );
       return responce.json();
     } catch (error) {
@@ -45,9 +45,9 @@ const weatherServices = {
     if (value.length > 2) {
       try {
         const response = await fetch(
-          `http://api.weatherapi.com/v1/search.json?key=${
+          `http://api.weatherapi.com/v1/search.json?key=${JSON.stringify(
             import.meta.env.VITE_REACT_WEATHER_API_KEY
-          }&q=${value}`
+          )}&q=${value}`
         );
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
