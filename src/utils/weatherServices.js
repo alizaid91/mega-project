@@ -1,4 +1,5 @@
 const BASE_URL = "http://api.weatherapi.com/v1";
+console.log(import.meta.env.VITE_REACT_WEATHER_API_KEY);
 
 const weatherServices = {
   //fetch weather of multiple cities
@@ -7,8 +8,7 @@ const weatherServices = {
       try {
         const responce = await fetch(
           `${BASE_URL}/current.json?key=${
-            import.meta.env.VITE_REACT_WEATHER_API_KEY ||
-            process.env.VITE_REACT_WEATHER_API_KEY
+            import.meta.env.VITE_REACT_WEATHER_API_KEY
           }&q=${city}&aqi=no`
         );
         if (!responce.ok) {
@@ -30,8 +30,7 @@ const weatherServices = {
     try {
       const responce = await fetch(
         `${BASE_URL}/current.json?key=${
-          import.meta.env.VITE_REACT_WEATHER_API_KEY ||
-          process.env.VITE_REACT_WEATHER_API_KEY
+          import.meta.env.VITE_REACT_WEATHER_API_KEY
         }&q=${city}&aqi=no`
       );
       return responce.json();
@@ -47,8 +46,7 @@ const weatherServices = {
       try {
         const response = await fetch(
           `http://api.weatherapi.com/v1/search.json?key=${
-            import.meta.env.VITE_REACT_WEATHER_API_KEY ||
-            process.env.VITE_REACT_WEATHER_API_KEY
+            import.meta.env.VITE_REACT_WEATHER_API_KEY
           }&q=${value}`
         );
         if (!response.ok) {
