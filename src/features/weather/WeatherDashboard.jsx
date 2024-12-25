@@ -50,13 +50,13 @@ const WeatherDashboard = () => {
   };
 
   return (
-    <div className={`${selectedCard ? 'max-h-screen overflow-hidden' : 'min-h-screen overflow-auto'} bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 pt-20 pb-10 px-8`}>
+    <div className={`${selectedCard ? 'max-h-screen overflow-hidden' : 'min-h-screen overflow-auto'} bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 pt-20 pb-10`}>
       {
         loadingWeather
           ? <div className='w-screen h-screen flex items-center justify-center'>
             <h1 className='text-xl font-bold text-white'>Loading...</h1>
           </div>
-          : <div className=''>
+          : <div className='mx-4'>
             <header className="text-center">
               <motion.h1
                 className="text-4xl font-bold text-transparent bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text mb-4"
@@ -110,7 +110,7 @@ const WeatherDashboard = () => {
                     Search
                   </button>
                   {suggestions.length > 0 && (
-                    <ul className="absolute w-full bg-white border border-gray-300 rounded-lg shadow-xl mt-2 z-10 overflow-hidden">
+                    <ul className="absolute w-full bg-black/90 text-white backdrop-blur-lg space-normal rounded-lg shadow-2xl mt-2 z-10 overflow-hidden">
                       {suggestions.map((suggestion) => (
                         <li
                           key={suggestion.id}
