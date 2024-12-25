@@ -50,7 +50,7 @@ const WeatherDashboard = () => {
   };
 
   return (
-    <div className={`${selectedCard ? 'max-h-screen overflow-hidden' : 'min-h-screen overflow-auto'} bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 pt-20 pb-10`}>
+    <div className={`${selectedCard ? 'max-h-screen overflow-hidden' : 'min-h-screen overflow-auto'} flex justify-center bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 pt-20 pb-10`}>
       {
         loadingWeather
           ? <div className='w-screen h-screen flex items-center justify-center'>
@@ -59,7 +59,7 @@ const WeatherDashboard = () => {
           : <div className='mx-4'>
             <header className="text-center">
               <motion.h1
-                className="text-4xl font-bold text-transparent bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text mb-4"
+                className="text-4xl font-bold text-transparent bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text mb-3"
                 initial={{ y: -100, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.8 }}
@@ -76,7 +76,7 @@ const WeatherDashboard = () => {
                 Real-time weather updates for cities across the globe.
               </motion.p>
             </header>
-            <div className="flex justify-center mt-12 relative">
+            <div className="flex justify-center mt-6 relative mx-2">
               <form onSubmit={handleSearch} className="w-full max-w-md">
                 <div className="relative">
                   <input

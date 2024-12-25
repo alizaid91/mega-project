@@ -46,7 +46,7 @@ const TodoList = () => {
         </motion.p>
       </header>
       <motion.div
-        className='relative p-1 flex flex-col max-w-[500px] gap-3 mx-2'
+        className='relative p-1 flex flex-col max-w-[500px] gap-3 mx-2 sm:mx-auto'
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.5 }}
@@ -113,7 +113,7 @@ const TodoList = () => {
                   {/* Active Todos */}
                   {list.todos.length > 0 ? (
                     list.todos.map((todo) => (
-                      <li key={todo.id} className="group hover:bg-gray-400/40 py-1 px-2 transition-colors duration-400 rounded-lg flex items-start justify-between">
+                      <li key={todo.id} className="group md:hover:bg-gray-400/40 py-1 px-2 transition-colors duration-400 rounded-lg flex items-start justify-between">
                         <div className="flex items-start gap-3 pr-3">
                           <div
                             className="text-xl cursor-pointer pt-1"

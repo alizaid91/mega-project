@@ -13,16 +13,16 @@ const Navbar = () => {
             <Link to="/">Mega Project</Link>
           </h1>
           <div className='items-center hidden sm:flex gap-6 md:gap-8 font-bold text-gray-200'>
-            <li>
+            <li className='hover:text-indigo-500 transition-colors'>
               <Link to="/">Home</Link>
             </li>
-            <li>
+            <li className='hover:text-indigo-500 transition-colors'>
               <Link to="/todo">Todo</Link>
             </li>
-            <li>
+            <li className='hover:text-indigo-500 transition-colors'>
               <Link to="/weather">Weather</Link>
             </li>
-            <li>
+            <li className='hover:text-indigo-500 transition-colors'>
               <Link to="/cart">Cart</Link>
             </li>
           </div>
