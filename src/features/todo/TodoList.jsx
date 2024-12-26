@@ -59,7 +59,7 @@ const TodoList = () => {
                 ? <div onClick={() => { setSelectedList(todoList[0]); setShowListOptions(false) }} key={index} className={`text-2xl py-1 px-2 rounded-lg ${list.id === selectedList.id ? 'bg-white/10' : ''} cursor-pointer`}>
                   <IoMdStar />
                 </div>
-                : <div onClick={() => { setSelectedList(list); setShowListOptions(false) }} className={`py-1 px-2 rounded-lg ${list.id === selectedList.id ? 'bg-white/10' : ''} cursor-pointer`}>
+                : <div key={index} onClick={() => { setSelectedList(list); setShowListOptions(false) }} className={`py-1 px-2 rounded-lg ${list.id === selectedList.id ? 'bg-white/10' : ''} cursor-pointer`}>
                   <h1>
                     {list.name}
                   </h1>

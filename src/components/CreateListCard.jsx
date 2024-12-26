@@ -16,8 +16,8 @@ const CreateListPopup = ({ showPopup, onClose }) => {
     };
 
     return (
-        <div className={`${showPopup ? 'visible' : 'invisible'} flex fixed inset-0 items-center justify-center bg-black/60 z-50`}>
-            <div className={`${showPopup ? 'opacity-100 scale-100' : 'scale-125 opacity-0'} transition-all bg-white rounded-xl shadow-lg p-6 w-[280px] sm:w-[450px]`}>
+        <div className={`${showPopup ? 'visible' : 'invisible'} flex fixed inset-0 items-center justify-center bg-black/90 z-50`}>
+            <div className={`${showPopup ? 'opacity-100 scale-100' : 'scale-125 opacity-0'} transition-all bg-white rounded-xl shadow-lg p-6 w-[290px] sm:w-[450px]`}>
                 <h3 className="text-xl font-semibold mb-4 text-gray-700">
                     Create New List
                 </h3>
